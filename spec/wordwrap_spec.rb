@@ -7,9 +7,3 @@ describe 'Wrapper class' do
     end
 end
 
-describe 'Wrapper class' do 
-    wrapper = Wrapper.new
-    it 'has a wrap method' do 
-        expect(wrapper.wrap).to eq('hello')
-    end
-end
