@@ -1,0 +1,26 @@
+version: 2.1
+orbs:
+  ruby: circleci/ruby@1.4.0
+  heroku: circleci/heroku@1.2.6
+
+jobs:
+  build_and_test:
+    docker:
+      - image: cimg/ruby:2.7-node
+    steps:
+      - checkout
+      - ruby/install-deps
+      - ruby/rspec-test
+      #  - checkout
+      # - run: bundle check --path=vendor/bundle || bundle install --path=vendor/bundle --jobs=4 --retry=3
+      # - run: mkdir ~/rspec
+      # - run:
+      #     command: bundle exec rspec --format progress --format RspecJunitFormatter -o ~/rspec/rspec.xml
+      #     when: always
+      # - store_test_results:
+      #     path: ~/rspec
+
+workflows:
+  build_and_test:
+    jobs:
+      - build_and_test
